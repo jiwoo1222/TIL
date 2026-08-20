@@ -1,0 +1,146 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    background: #f1f3f4;
+}
+
+#login {
+    width: 400px;
+    margin: 80px auto;
+    padding: 40px;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+}
+
+#login h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#login h1 img {
+    width: 90px;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.sub {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #555;
+}
+
+.input_group {
+    position: relative;
+    margin-bottom: 25px;
+}
+
+.input_group input {
+    width: 100%;
+    padding: 20px 10px 10px;
+    border: 1px solid #aaa;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.input_group input:focus {
+    outline: none;
+    border: 2px solid #1a73e8;
+}
+
+.input_group label {
+    position: absolute;
+    left: 10px;
+    top: 15px;
+    color: #aaa;
+    transition: 0.2s;
+    background: #fff;
+    padding: 0 5px;
+}
+
+.input_group input:focus + label,
+.input_group input:valid + label {
+    top: -8px;
+    font-size: 0.75rem;
+    color: #1a73e8;
+}
+
+.link a {
+    color: #1a73e8;
+    font-size: 0.9rem;
+}
+
+.desc {
+    font-size: 0.85rem;
+    margin: 20px 0;
+}
+
+.bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.join {
+    color: #1a73e8;
+}
+
+button {
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+
+#next_btn,
+#login_btn {
+    background: #1a73e8;
+    color: #fff;
+}
+
+#next_btn:hover,
+#login_btn:hover {
+    background: #1669c1;
+}
+
+#back_btn {
+    color: #1a73e8;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.hidden {
+    display: none;
+}
+
+.email_box {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.email_box span {
+    border: 1px solid #ddd;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    color: #444;
+}
+
+footer {
+    margin-top: 60px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8rem;
+}
+
+footer .right a {
+    margin-left: 15px;
+    color: #777;
+}

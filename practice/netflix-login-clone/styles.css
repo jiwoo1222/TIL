@@ -1,0 +1,124 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: url('images/hero.jpg') no-repeat center/cover fixed;
+}
+
+.overlay {
+    background: rgba(0,0,0,0.6);
+    height: 100vh;
+}
+
+nav {
+    padding: 20px 50px;
+    position: absolute;
+    top: 20px;
+    left: 40px;
+    z-index: 10;
+}
+
+nav img {
+    width: 140px;
+    height: auto;
+    filter: brightness(1.2);
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.box {
+    background: rgba(0,0,0,0.75);
+    padding: 60px;
+    border-radius: 6px;
+    width: 100%;
+    max-width: 400px;
+}
+
+h2 {
+    color: white;
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+.input-group {
+    position: relative;
+    margin-bottom: 15px;
+}
+
+input {
+    width: 99%;
+    height: 60px;
+    padding: 10;
+    border-radius: 5px;
+    border: none;
+    background: #333;
+    color: white;
+    font-size: 16px;
+}
+
+input:focus {
+    outline: none;
+}
+
+.input-group label {
+    position: absolute;
+    left: 15px;
+    top: 18px;
+    color: #aaa;
+    font-size: 16px;
+    transition: 0.2s;
+}
+
+input:focus + label,
+input:not(:placeholder-shown) + label {
+    top: 5px;
+    font-size: 12px;
+}
+
+button {
+    background: #e50914;
+    border: none;
+    width: 100%;
+    height: 60px;
+    padding: 20;
+
+    color: white;
+    font-size: 16px;
+    margin-top: 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #f6121d;
+}
+
+.footer {
+    color: #aaa;
+    margin-top: 20px;
+}
+
+.footer span {
+    color: white;
+    cursor: pointer;
+}
+
+.footer label {
+    position: static;
+}
+
+#signup {
+    display: none;
+}
+
+#toggle:checked ~ .container #login {
+    display: none;
+}
+
+#toggle:checked ~ .container #signup {
+    display: block;
+}
