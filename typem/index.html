@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TYPE:M | 나만의 전공 매칭</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="bg-grid"></div>
+    <div class="blur blur1"></div>
+    <div class="blur blur2"></div>
+
+    <div class="main-wrapper">
+        <nav>
+            <h1 class="logo" onclick="restartApp()" style="cursor:pointer">✦ TYPE:M</h1>
+            <div class="nav-menu">
+                <a href="javascript:void(0)" onclick="openInfo()">이용 안내</a>
+            </div>
+        </nav>
+
+        <section class="hero" id="home-section">
+            <h1 class="main-title">TYPE:M</h1>
+            <h2 class="sub-title">나에게 잘 맞는 전공을 찾아보세요</h2>
+            <p class="desc-text">간단한 질문으로 당신에게 딱 맞는 전공을 추천해드립니다</p>
+            <div class="card-wrap">
+                <div class="main-card glass">
+                    <h3>일반 전공</h3>
+                    <div class="card-text">
+                        실무 역량과 취업을 목표로 하는 전공 과정<br>
+                        협업과 프로젝트 중심의 실전 개발 경험 제공
+                    </div>
+                    <div class="tag-wrap">
+                        <span class="tag">프론트엔드</span>
+                        <span class="tag">백엔드</span>
+                        <span class="tag">UI/UX</span>
+                        <span class="tag">AI</span>
+                        <span class="tag">IOS</span>
+                        <span class="tag">IoT</span>
+                        <span class="tag">플러터</span>
+                        <span class="tag">DevOps</span>
+                        <span class="tag">게임개발</span>
+                    </div>
+                </div>
+
+                <div class="main-card glass">
+                    <h3>기능반</h3>
+                    <div class="card-text">
+                        기능대회 출전과 메달 획득을 목표로 하는<br>
+                        실전 문제 해결과 대회 준비에 특화된 심화 과정
+                    </div>
+                    <div class="tag-wrap">
+                        <span class="tag">사이버 보안</span>
+                        <span class="tag">IT 네트워크 시스템</span>
+                        <span class="tag">모바일 로보틱스</span>
+                        <span class="tag">클라우드 컴퓨팅</span>
+                        <span class="tag">모바일 앱 개발</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="start-box glass">
+                <h3 class="start-title">검사 시작하기</h3>
+                <button class="start-btn blue-btn" onclick="startQuiz()">
+                    검사 시작하기 <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </div>
+        </section>
+
+        <section id="quiz-section" class="hero hidden" style="zoom: 1.25;">
+            <div id="step-badge" class="top-badge">STEP 1: 성향 분석</div>
+            <div id="quiz-info" style="margin-top:10px; font-weight:600; color:#00458a;"></div>
+            <div class="progress-container">
+                <div id="progress-bar"></div>
+            </div>
+            <h2 id="q-text"></h2>
+            <div class="options-grid">
+                <button class="opt-btn" onclick="onAnswer(5)">매우 그렇다</button>
+                <button class="opt-btn" onclick="onAnswer(4)">그렇다</button>
+                <button class="opt-btn" onclick="onAnswer(3)">보통</button>
+                <button class="opt-btn" onclick="onAnswer(2)">아니다</button>
+                <button class="opt-btn" onclick="onAnswer(1)">매우 아니다</button>
+            </div>
+        </section>
+
+        <section id="mid-result-section" class="hero hidden" style="zoom: 1.25;">
+            <div class="top-badge">성향 분석 완료</div>
+            <h2 style="font-size: 32px; margin-bottom: 10px;">당신은 <span id="user-type-text"
+                    style="color:#00458a;"></span> 입니다!</h2>
+            <p id="type-desc" style="margin-bottom: 30px;"></p>
+            <div class="start-box glass" style="max-width: 700px; width: 80%; margin: 0 auto; padding: 40px 20px;">
+                <h3 style="font-size:20px; color:#00458a; margin-bottom:30px;">나에게 딱 맞는 전공은 무엇일까요?</h3>
+                <button class="start-btn blue-btn" onclick="startPhase2()">세부 분석 하러 가기 →</button>
+            </div>
+        </section>
+
+        <section id="result-section" class="hero hidden" style="zoom: 1.25;">
+            <div class="top-badge">최종 추천 결과</div>
+
+            <div id="shared-banner" class="shared-banner hidden">
+                <i class="fa-solid fa-share-nodes"></i>
+                친구가 공유한 결과예요! 나도 궁금하다면 아래에서 직접 검사해보세요.
+                <button class="shared-cta-btn" onclick="restartApp()">나도 검사하기</button>
+            </div>
+
+            <h1 id="res-major-name" style="font-size:55px; color:#00458a; margin-bottom:20px;"></h1>
+            <div id="res-desc-box" class="glass" style="text-align:left; max-width:600px; margin: 0 auto; padding:35px;">
+                <p id="res-desc" style="margin-bottom:20px; font-size:17px; line-height:1.6;"></p>
+                <p id="res-tech" style="font-weight:bold; color:#00458a;"></p>
+                <p id="res-advice"
+                    style="margin-top:15px; color:#64748b; font-style:italic; border-top:1px solid #eee; padding-top:15px;">
+                </p>
+            </div>
+
+            <div id="fit-chart" class="glass" style="text-align:left; max-width:600px; margin:20px auto 0; padding:30px;">
+                <h3 style="font-size:18px; color:#00458a; margin-bottom:18px;">전공 적합도 TOP 3</h3>
+                <div id="fit-bars"></div>
+                <p style="margin-top:10px; font-size:12px; color:#94a3b8;">
+                    ※ 1순위와 2, 3순위의 점수 차이가 크지 않다면, 해당 전공들도 함께 고려해보세요.
+                </p>
+            </div>
+            <div style="display:flex; justify-content:center; gap:12px; margin-top:30px; flex-wrap:wrap;">
+                <button class="start-btn" onclick="shareResult()"
+                    style="padding:12px 20px; width:150px; font-size:16px; border-radius:8px; background:#00458a; color:white; border:none; cursor:pointer; display:flex; align-items:center; justify-content:center; gap:8px;">
+                    <i class="fa-solid fa-share-nodes"></i> 결과 공유
+                </button>
+                <button class="start-btn" onclick="showMajorDetail()"
+                    style="padding:12px 20px; width:150px; font-size:16px; border-radius:8px; background:#1e293b; color:white; border:none; cursor:pointer; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:2px; line-height:1.3;">
+                    <span>전공 더<br>알아보기</span>
+                </button>
+                <button class="start-btn" onclick="restartApp()"
+                    style="padding:12px 20px; width:150px; font-size:16px; border-radius:8px; background:#94a3b8; color:white; border:none; cursor:pointer;">
+                    다시 하기
+                </button>
+            </div>
+        </section>
+
+        <section id="detail-section" class="hero hidden" style="zoom: 1.25;">
+            <div class="top-badge">세부 전공 안내</div>
+            <h2 style="font-size: 28px; margin-bottom: 20px; color:#1e293b;">내 적합도부터 다시 확인해볼까요?</h2>
+
+            <div id="detail-fit-chart" class="glass" style="text-align:left; max-width:600px; margin:0 auto 30px; padding:30px;">
+                <div id="detail-fit-bars"></div>
+            </div>
+
+            <div id="detail-major-list" style="max-width:700px; margin:0 auto; text-align:left;"></div>
+
+            <div style="display:flex; justify-content:center; gap:12px; margin-top:30px; flex-wrap:wrap;">
+                <button class="start-btn blue-btn" onclick="showAllMajors()"
+                    style="padding:14px 24px; width:auto; font-size:16px; border-radius:8px;">
+                    전체 전공 보기 <i class="fa-solid fa-arrow-right"></i>
+                </button>
+                <button class="start-btn" onclick="backToResultFromDetail()"
+                    style="padding:14px 24px; width:auto; font-size:16px; border-radius:8px; background:#94a3b8; color:white; border:none; cursor:pointer;">
+                    결과로 돌아가기
+                </button>
+            </div>
+        </section>
+
+        <section id="all-majors-section" class="hero hidden" style="zoom: 1.25;">
+            <div class="top-badge" id="all-majors-badge">전체 전공 보기</div>
+            <h2 style="font-size: 28px; margin-bottom: 20px; color:#1e293b;">모든 전공을 살펴보세요</h2>
+            <p style="color:#64748b; margin-bottom:30px; font-size:14px;">다른 전공들도 확인하며 관심 있는 전공을 찾아보세요.</p>
+
+            <div id="all-major-list" style="max-width:700px; margin:0 auto; text-align:left;"></div>
+
+            <div style="display:flex; justify-content:center; gap:12px; margin-top:30px; flex-wrap:wrap;">
+                <button class="start-btn" onclick="backToDetailFromAll()"
+                    style="padding:14px 24px; width:auto; font-size:16px; border-radius:8px; background:#94a3b8; color:white; border:none; cursor:pointer;">
+                    세부 결과로 돌아가기
+                </button>
+                <button id="all-majors-toggle-btn" class="start-btn blue-btn" onclick="toggleAllMajorsCategory()"
+                    style="padding:14px 24px; width:auto; font-size:16px; border-radius:8px;">
+                    기능반 보기 <i class="fa-solid fa-arrow-right"></i>
+                </button>
+                <button class="start-btn" onclick="goHomeFromAllMajors()"
+                    style="padding:14px 24px; width:auto; font-size:16px; border-radius:8px; background:#94a3b8; color:white; border:none; cursor:pointer;">
+                    메인으로 가기
+                </button>
+            </div>
+        </section>
+
+    </div>
+
+    <div id="info-modal" class="auth-overlay">
+        <div class="modal-content">
+            <h2 style="color:#00458a; margin-bottom:20px;">이용 안내</h2>
+            <div style="text-align:left; line-height:1.8; font-size:15px;">
+                <p><strong>[검사 방법]</strong> 본인이 평소 선호하는 활동에 가장 가까운 버튼을 눌러주세요.</p>
+                <p><strong>[전공 설명]</strong> 각 전공은 개발 실무 중심의 '일반 전공'과 전문 기술 대회 중심의 '기능반'으로 나뉩니다. 성향을 분석한 후 세부 분석을 통해 본인에게
+                    가장 잘 맞는 전공을 찾아보세요!</p>
+                <p><strong>[크레딧]</strong> 기획 및 제작: 선가영, 양지우
+                    <button id="btn-more" onclick="toggleCredits()"
+                        style="background: none; border: none; color: #555555; font-size: 11px; cursor: pointer; padding-left: 5px;">[
+                        더보기 ]</button>
+                </p>
+                <div id="more-names"
+                    style="display: none; font-size: 13px; color: #666666; margin-top: -5px; margin-bottom: 10px; padding-left: 10px;">
+                    FrontEnd 9기 김지유 선배님, Backend 9기 김수빈 선배님, DevOps 9기 박채은 선배님, IOS 9기 김준표 선배님, UI/UX 8기 모태환 선배님, 게임 개발 9기 박시온 선배님, Flutter/모바일앱개발 9기 류수연 선배님, AI 8기 배용빈 선배님, IOT 8기 김동현 선배님, 사이버 보안 8기 서정민 선배님, 모바일로보틱스 8기 이산 선배님, IT네트워크 시스템 8기 이영서 선배님, 클라우드 컴퓨팅 8기 한승재 선배님 모두 감사합니다! </div>
+            </div>
+            <button onclick="closeModal('info-modal')" class="login-btn" style="margin-top:20px;">닫기</button>
+        </div>
+    </div>
+
+    <div id="toast" class="toast hidden"></div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
